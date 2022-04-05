@@ -9,10 +9,15 @@ class SvgIcons extends StatelessWidget {
   final double width;
   final double height;
 
-  const SvgIcons({
-    Key? key,required this.svgName,required this.degree,required this.top,
-    required this.left,required this.width,required this.height
-  }) : super(key: key);
+  const SvgIcons(
+      {Key? key,
+      required this.svgName,
+      required this.degree,
+      required this.top,
+      required this.left,
+      required this.width,
+      required this.height})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -39,6 +39,10 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   flutter_svg: ^1.0.3
   glassmorphism: ^3.0.0
+  rive: ^0.8.4
+  fl_chart: ^0.50.1
+  get: ^4.6.1
+  
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +70,9 @@ flutter:
   assets:
     - lib/components/images/
     - lib/components/images/coins/
+    - lib/components/images/logo/
+    - lib/components/icons/
+    - lib/components/animations/
     
 
 

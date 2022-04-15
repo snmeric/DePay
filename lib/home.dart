@@ -1,13 +1,13 @@
-import 'dart:ui' as ui;
+// ignore_for_file: prefer_const_constructors
 import 'dart:ui';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:de_pay/components/frosted_glass.dart';
-import 'package:de_pay/pages/backgrounds_custompaint.dart';
+import 'package:de_pay/components/add_card.dart';
+import 'package:de_pay/pages/animation_ground.dart';
+import 'package:de_pay/pages/coin_home.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:de_pay/components/my_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:glassmorphism/glassmorphism.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'theme/constants.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -41,9 +41,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    //SmoothPageIndıcator
+    final _controller = PageController();
+
     final Size size = MediaQuery.of(context).size;
     double contWidth = size.width * 0.70;
-    double contHeight = size.height * 0.3;
+    double contHeight = size.height * 0.25;
 
     return Scaffold(
       //backgroundColor: Colors.red,
@@ -52,7 +55,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
       //Appbar
       appBar: PreferredSize(
-        
         preferredSize: const Size.fromHeight(kToolbarHeight),
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
@@ -61,11 +63,9 @@ class _MyHomePageState extends State<MyHomePage> {
               : 0,
           child: _isAppBar
               ? AppBar(
-                
                   flexibleSpace: Padding(
                     padding: const EdgeInsets.fromLTRB(120, 22, 120, 0),
                     child: Container(
-                      
                       decoration: BoxDecoration(boxShadow: [
                         BoxShadow(
                           blurRadius: 16,
@@ -74,7 +74,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         )
                       ]),
                       child: ClipRRect(
-                        
                         borderRadius: BorderRadius.circular(80.0),
                         child: BackdropFilter(
                           filter: ImageFilter.blur(
@@ -82,7 +81,6 @@ class _MyHomePageState extends State<MyHomePage> {
                             sigmaY: 40.0,
                           ),
                           child: Container(
-                            
                             decoration: BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(
@@ -99,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
                                     colors: [
-                                      Colors.white.withOpacity(0.08),
+                                      Colors.white.withOpacity(0.15),
                                       Colors.white.withOpacity(0.05),
                                     ],
                                     stops: const [
@@ -139,118 +137,116 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
 
       //BODY
-      body: Stack(
-        children: [
-          //BACKGROUND
-          Stack(
-            children: const [
-              BackgroundsCustomPaint(
-                left: -180,
-                top: 200,
-                size: 400,
-              ),
-              BackgroundsCustomPaint(
-                left: 180,
-                top: 20,
-                size: 500,
-              ),
-              BackgroundsCustomPaint(
-                left: 120,
-                top: -200,
-                size: 300,
-              ),
-              BackgroundsCustomPaint(
-                left: 0,
-                top: 400,
-                size: 600,
-              ),
-            ],
-          ),
-
-          //ANASAYFA
-
-          SafeArea(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              //clipBehavior: Clip.none,
+      body: ScrollConfiguration(
+        behavior: MyBehavior(),
+        child: SingleChildScrollView(
+          child: SizedBox(
+            height: size.height,
+            child: Stack(
               children: [
-                //ANASAYFA ilk resimler kaydirmali
-                /*   Flexible(
-                  flex: 3,
-                  child: ListView(
-                    controller: _scroolController,
-                    children: [
-                      //SizedBox
-                      const SizedBox(
-                        height: 10,
-                      ),
-          
-                      CarouselSlider(
-                        items: [
-                          Container(
-                            decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                image: DecorationImage(
-                                    image: AssetImage(tanitim4),
-                                    fit: BoxFit.cover)),
-                          ),
-                          Container(
-                            decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                image: DecorationImage(
-                                    image: AssetImage(tanitim1),
-                                    fit: BoxFit.cover)),
-                          ),
-                          Container(
-                            decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                image: DecorationImage(
-                                    image: AssetImage(tanitim2),
-                                    fit: BoxFit.cover)),
-                          ),
-                          Container(
-                            decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                image: DecorationImage(
-                                    image: AssetImage(tanitim3),
-                                    fit: BoxFit.cover)),
-                          )
-                        ],
-                        options: CarouselOptions(
-                          height: 200,
-                          autoPlay: true,
-                          //autoPlayCurve: Curves.easeInOut,
-                          enlargeCenterPage: true,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-          */
-                //Coinler
+                //BackgroundsCustomPaint(),
+                AniBackground(),
 
-                //FROSTED GLASS History
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: FrostedGlass(
-                      width: contWidth,
-                      height: contHeight,
-                      child: Container(),
+                Column(
+                  //clipBehavior: Clip.none,
+
+                  children: [
+                    //ANASAYFA ilk resimler kaydirmali
+                    /*   Flexible(
+                      flex: 3,
+                      child: ListView(
+                        controller: _scroolController,
+                        children: [
+                          //SizedBox
+                          const SizedBox(
+                            height: 10,
+                          ),
+                    
+                          CarouselSlider(
+                            items: [
+                              Container(
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                    image: DecorationImage(
+                                        image: AssetImage(tanitim4),
+                                        fit: BoxFit.cover)),
+                              ),
+                              Container(
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                    image: DecorationImage(
+                                        image: AssetImage(tanitim1),
+                                        fit: BoxFit.cover)),
+                              ),
+                              Container(
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                    image: DecorationImage(
+                                        image: AssetImage(tanitim2),
+                                        fit: BoxFit.cover)),
+                              ),
+                              Container(
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                    image: DecorationImage(
+                                        image: AssetImage(tanitim3),
+                                        fit: BoxFit.cover)),
+                              )
+                            ],
+                            options: CarouselOptions(
+                              height: 200,
+                              autoPlay: true,
+                              //autoPlayCurve: Curves.easeInOut,
+                              enlargeCenterPage: true,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+                    */
+
+                    SizedBox(height: 90),
+                    Container(
+                      height: contHeight,
+                      alignment: Alignment.center,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        controller: _controller,
+                        children: const [
+                          MyCard(),
+                          AddWallet(),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    SmoothPageIndicator(
+                      controller: _controller,
+                      count: 2,
+                      effect: ExpandingDotsEffect(
+                        activeDotColor: Colors.white,
+                        dotHeight: 10,
+                      ),
+                    ),
+                    SizedBox(height: size.height * 0.02),
+                    CoinHome(
+                      coinAdi: "Bitcoin",
+                      fiyati: 42250,
+                      degisim: 15.6,
+                      artmisMi: true,
+                    ),
+                    //LineChartSample2()
+                  ],
                 ),
-                SizedBox(height: size.height * 0.1),
               ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }

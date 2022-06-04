@@ -9,7 +9,7 @@ class YapilacakEkran extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: Color(0xff2C2E3B),
+      backgroundColor: const Color(0xff2C2E3B),
       appBar: AppBar(
         title: Text(
           "YAPIM AŞAMASINDA",
@@ -19,11 +19,9 @@ class YapilacakEkran extends StatelessWidget {
         backgroundColor: Colors.transparent,
         centerTitle: true,
       ),
-      body: Container(
-        child: RiveAnimation.asset(
-          "lib/components/animations/finger-tapping.riv",
-          fit: BoxFit.cover,
-        ),
+      body: const RiveAnimation.asset(
+        "lib/components/animations/finger-tapping.riv",
+        fit: BoxFit.cover,
       ),
     );
   }

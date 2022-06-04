@@ -1,49 +1,57 @@
 import 'dart:ui';
-
-import 'package:de_pay/pages/graphic.dart';
+import 'package:de_pay/chart_test/chard_test.dart';
+import 'package:sizer/sizer.dart';
 import 'package:de_pay/pages/loading_screen.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:glassmorphism/glassmorphism.dart';
+import 'package:intl/intl.dart';
 
 class CoinHome extends StatelessWidget {
-  final String coinAdi;
-  final double fiyati;
-  final double degisim;
-  final bool artmisMi;
 
-  const CoinHome(
-      {Key? key,
-      required this.coinAdi,
-      required this.fiyati,
-      required this.degisim,
-      required this.artmisMi})
-      : super(key: key);
+  String name;
+  String symbol;
+  String imageUrl;
+  double price;
+  double change;
+  double changePercentage;
+
+
+  CoinHome({Key? key, 
+  
+    required this.name,
+    required this.symbol,
+    required this.imageUrl,
+    required this.price,
+    required this.change,
+    required this.changePercentage,
+
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+
     final Size size = MediaQuery.of(context).size;
     double contWidth = size.width * 0.60;
     double contHeight = size.height * 0.3;
-    artmisMi == true;
-
+    var f = NumberFormat('###.##', 'en_US');
 
     return Padding(
-      padding: const EdgeInsets.only(left: 40, right: 20),
+      padding: const EdgeInsets.only(left: 10, right: 10),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(30),
         child: InkWell(
           borderRadius: BorderRadius.circular(30),
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const YapilacakEkran()),
-            );
+            Get.to(() => const YapilacakEkran());
           },
           child: SizedBox(
-            width: contWidth,
-            height: contHeight,
+            width: 60.w,
+            
+            
+            
             child: Stack(children: [
               BackdropFilter(
                 filter: ImageFilter.blur(
@@ -65,7 +73,7 @@ class CoinHome extends StatelessWidget {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.12),
-                      blurRadius: 30,
+                      blurRadius: 30.h,
                       spreadRadius: 2,
                     ),
                   ],
@@ -85,11 +93,9 @@ class CoinHome extends StatelessWidget {
               ),
 
               //GRAFİK
-           
-
 
               Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -99,9 +105,21 @@ class CoinHome extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 15, top: 15),
                             child: Container(
+                                height: 5.h,
+                                child: ClipOval(
+                                  child: Image.network(
+                                    imageUrl,
+                                    fit: BoxFit.cover,
+                                  ),
+                                )),
+                          ),
+                        
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15, top: 15),
+                            child: Container(
                               alignment: Alignment.topLeft,
                               child: Text(
-                                coinAdi,
+                                name,
                                 style: GoogleFonts.poppins(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w500,
@@ -114,17 +132,35 @@ class CoinHome extends StatelessWidget {
                       ),
                     ],
                   ),
+               
+                 // SizedBox(height: 1.h,),
+                    // SizedBox(
+                    //   width: 50.w,
+                    //   height: 15.h,
+                    //   child: Obx(
+                    //     () => LineChart(chart(
+                    //       isHomePage,
+                    //       spots,
+                    //       minY.value,
+                    //       maxY.value,
+                    //       7,
+                    //       profitPercent >= 0,
+                    //     )),
+                    //   ),
+                    // ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        margin: const EdgeInsets.all(15),
-                        child: Text(
-                          "\$" + fiyati.toString(),
-                          style: GoogleFonts.poppins(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 17,
+                      Expanded(
+                        child: Container(
+                          margin: const EdgeInsets.all(15),
+                          child: Text(
+                            "\$" + price.toDouble().toString(),
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 17,
+                            ),
                           ),
                         ),
                       ),
@@ -132,9 +168,20 @@ class CoinHome extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.all(15),
                         child: Text(
-                          "%" + degisim.toString(),
+                          changePercentage.toDouble() < 0
+                              ? f
+                                      .format(changePercentage.toDouble())
+                                      .toString() +
+                                  '%'
+                              : '+' +
+                                  f
+                                      .format(changePercentage.toDouble())
+                                      .toString() +
+                                  '%',
                           style: GoogleFonts.poppins(
-                            color: artmisMi ? Colors.green : Colors.red,
+                            color: changePercentage.toDouble() < 0
+                                ? Colors.redAccent
+                                : Colors.greenAccent,
                             fontWeight: FontWeight.w500,
                             fontSize: 17,
                           ),
@@ -148,13 +195,6 @@ class CoinHome extends StatelessWidget {
           ),
         ),
       ),
-      
     );
-    
   }
-
-  
 }
-
-
- 

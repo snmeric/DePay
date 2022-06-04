@@ -1,6 +1,5 @@
 import 'dart:ui';
-
-import 'package:de_pay/pages/loading_screen.dart';
+import 'package:de_pay/view/wallet_connect/choose_wallet.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,7 +20,7 @@ class AddWallet extends StatelessWidget {
              onTap: () {
           Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const YapilacakEkran()),
+          MaterialPageRoute(builder: (context) =>ChooseWallet()),
           );
         },
           child: Container(

@@ -1,8 +1,4 @@
-///______UI of Login Page with Animation Background  Flutter__________///
-/// you should :
-/// add the package of fluttertoast: ^8.0.8  to pubspec.yaml file ///
-/// we use  sdk: ">=2.12.0 <3.0.0" ///
-/// our youtube channel : https://youtu.be/jdJyHqUicHM ///
+
 
 import 'package:de_pay/theme/constants.dart';
 import 'package:flutter/material.dart';
@@ -89,7 +85,9 @@ class _AniBackgroundState extends State<AniBackground> with TickerProviderStateM
       });
 
     Timer(Duration(milliseconds: 2500), () {
+       if(mounted) {
       controller1.forward();
+    }
     });
 
     controller2.forward();
@@ -173,7 +171,7 @@ class MyPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..shader = LinearGradient(
+      ..shader = const LinearGradient(
               colors: [Color(0xff17B3A9), Color(0xff0945DF)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight)
@@ -209,9 +207,9 @@ class MyPainter2 extends CustomPainter {
     final paint = Paint()
     
       ..shader = LinearGradient(
-              colors: [    Color(0xffAF4F9C).withOpacity(1),
-      Color(0xffE53983).withOpacity(1),
-      Color(0xffFB848F).withOpacity(1)],
+              colors: [    const Color(0xffAF4F9C).withOpacity(1),
+      const Color(0xffE53983).withOpacity(1),
+      const Color(0xffFB848F).withOpacity(1)],
       
               begin: Alignment.topLeft,
               end: Alignment.bottomRight)
@@ -309,7 +307,3 @@ class MyPainter5 extends CustomPainter {
   }
 }
 
-/// you should :
-/// add the package of fluttertoast: ^8.0.8  to pubspec.yaml file ///
-/// we use  sdk: ">=2.12.0 <3.0.0" ///
-/// our youtube channel : https://youtu.be/jdJyHqUicHM ///

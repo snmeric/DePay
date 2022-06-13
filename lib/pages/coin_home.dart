@@ -1,8 +1,6 @@
 import 'dart:ui';
-import 'package:de_pay/chart_test/chard_test.dart';
 import 'package:sizer/sizer.dart';
 import 'package:de_pay/pages/loading_screen.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';

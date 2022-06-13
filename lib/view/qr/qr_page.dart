@@ -1,6 +1,7 @@
 import 'package:de_pay/theme/constants.dart';
 import 'package:de_pay/view/qr/first.dart';
 import 'package:de_pay/view/qr/second.dart';
+import 'package:de_pay/view/qr/third.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -46,8 +47,8 @@ class _QrPageState extends State<QrPage> {
         ),
         body: TabBarView(
           children: [
-            First(),
-            Second(),
+            
+            
           ],
         ),
       ),

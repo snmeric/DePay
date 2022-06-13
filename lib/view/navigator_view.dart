@@ -1,16 +1,22 @@
 import 'dart:ui';
-import 'package:de_pay/chart_test/chard_test.dart';
-import 'package:de_pay/chart_test/chart_home_page.dart';
-import 'package:de_pay/models/api.dart';
 import 'package:de_pay/theme/constants.dart';
 import 'package:de_pay/view/homescreen.dart';
-import 'package:de_pay/view/piyasa/coin_card.dart';
+import 'package:de_pay/view/kampanyalar/kampanya.dart';
 import 'package:de_pay/view/piyasa/piyasa_page.dart';
-import 'package:de_pay/view/profil_page.dart';
+import 'package:de_pay/view/profil/profil.dart';
 import 'package:de_pay/view/qr/qr_page.dart';
+import 'package:de_pay/view/qr/qrmainpage.dart';
+import 'package:de_pay/walletadd/router.dart';
+import 'package:de_pay/walletadd/wallet_main_page.dart';
+
+
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import '../walletadd/intro_page.dart';
+import '../walletadd/service/configuration_service.dart';
+import '../walletadd/wallet/wallet_provider.dart';
 
 class NaviScreen extends StatefulWidget {
   const NaviScreen({Key? key}) : super(key: key);
@@ -22,18 +28,22 @@ class NaviScreen extends StatefulWidget {
 class _NaviScreenState extends State<NaviScreen> {
   int _selectedIndex = 0;
 
+  
+
   final screen = [
-    MyHomePage(),
-    PiyasaSayfasi(),
-    QrPage(),
-    
-   const Chome(),
-  const Center(child: Text('5'),),
+    const MyHomePage(),
+    const PiyasaSayfasi(),
+   
+   QrMainPage(),
+   
+  Kampanyalar(),
+  ProfilSayfasi()
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     
       extendBody: true,
       body: screen[_selectedIndex],
       bottomNavigationBar: Padding(
@@ -118,9 +128,10 @@ class _NaviScreenState extends State<NaviScreen> {
                             icon: IconlyBold.scan,
                             icon2: IconlyLight.scan,
                             onPressed: () {
-                              setState(() {
-                                _selectedIndex = 2;
-                              });
+                             setState(() {
+                              _selectedIndex = 2;
+                               
+                             });
                             },
                           ),
                           IconButtonBar(
@@ -208,3 +219,4 @@ class IconButtonBar extends StatelessWidget {
     );
   }
 }
+

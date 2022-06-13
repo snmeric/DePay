@@ -8,6 +8,7 @@ import 'package:de_pay/pages/coin_home.dart';
 import 'package:de_pay/theme/constants.dart';
 import 'package:de_pay/view/wallet_connect/add_card.dart';
 import 'package:de_pay/view/wallet_connect/my_card.dart';
+
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';

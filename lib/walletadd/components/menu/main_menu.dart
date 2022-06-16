@@ -30,11 +30,11 @@ class MainMenu extends StatelessWidget {
             trailing: const Icon( IconlyBold.arrowRightSquare),
             onTap: () async {
               final url =
-                  'https://faucet.clempe.dev?address=$address&network=${network.name.toLowerCase()}';
+                  'https://faucet.egorfine.com/';
               if (await canLaunch(url)) {
                 await launch(url);
               } else {
-                throw 'Could not launch $url';
+                throw 'Açılamadı $url';
               }
             },
           ),
@@ -47,7 +47,7 @@ class MainMenu extends StatelessWidget {
               if (await canLaunch(url)) {
                 await launch(url);
               } else {
-                throw 'Could not launch $url';
+                throw 'Açılamadı $url';
               }
             },
           ),
@@ -59,8 +59,8 @@ class MainMenu extends StatelessWidget {
               ),
               onTap: onRevealKey),
           ListTile(
-              title: const Text('Cüzdanı Resetletin'),
-              subtitle: const Text('Tüm cüzdan verilerini silin'),
+              title: const Text('Cüzdandan Çıkış Yap'),
+              subtitle: const Text('Cüzdandan çıkış yapın'),
               trailing: const Icon(
                Icons.restore_from_trash
               ),

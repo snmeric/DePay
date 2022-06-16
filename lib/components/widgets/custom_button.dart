@@ -10,6 +10,7 @@ class CustomButton extends StatelessWidget {
   final Widget? child;
   final IconData? buttonIcon;
   final Function? onPressed;
+  final String? onPressText;
 
   const CustomButton(
       {Key? key,
@@ -17,35 +18,43 @@ class CustomButton extends StatelessWidget {
       this.buttonText,
       this.child,
       this.buttonIcon,
-      this.onPressed})
+      this.onPressed, 
+      this.onPressText
+    
+      })
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
    
-    return NeumorphicButton(
-        onPressed: () {},
-        padding: EdgeInsets.all(buttonPadding),
-        style: NeumorphicStyle(
-          color: kButtonColor,
-          shadowDarkColor: kButtonColor,
-          shadowLightColor: Colors.black,
-          depth: 3,
-          intensity: 0.8,
-          shape: NeumorphicShape.concave,
-          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(13)),
-        ),
-        child: buttonText.toString().isEmpty
-            ? Icon(
-                buttonIcon,
-                color: Colors.white,
-              )
-            : Text(
-                buttonText.toString(),
-                style: GoogleFonts.poppins(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 15),
-              ));
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: NeumorphicButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed('$onPressText');
+          },
+          padding: EdgeInsets.all(buttonPadding),
+          style: NeumorphicStyle(
+            color: kButtonColor,
+            shadowDarkColor:Colors.black,
+            shadowLightColor: Colors.black54,
+            depth: 3,
+            intensity: 0.8,
+            shape: NeumorphicShape.concave,
+            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(13)),
+          ),
+          child: buttonText.toString().isEmpty
+              ? Icon(
+                  buttonIcon,
+                  color: Colors.white,
+                )
+              : Text(
+                  buttonText.toString(),
+                  style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 15),
+                )),
+    );
   }
 }

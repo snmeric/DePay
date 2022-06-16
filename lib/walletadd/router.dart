@@ -25,7 +25,7 @@ Map<String, WidgetBuilder> getRoutes(context) {
             // ignore: prefer_const_constructors
             builder: (context, store) => NaviScreen());
 
-      return const IntroPage();
+      return const IntroductionPage();
     },
 
      '/walletmainpage': (BuildContext context) {
@@ -46,21 +46,21 @@ Map<String, WidgetBuilder> getRoutes(context) {
           }, []);
 
           // ignore: prefer_const_constructors
-          return WalletCreatePage('Create wallet');
+          return WalletCreatePage('Cüzdan Oluştur');
         }),
     '/import': (BuildContext context) => WalletSetupProvider(
           // ignore: prefer_const_constructors
-          builder: (context, store) => WalletImportPage('Import wallet'),
+          builder: (context, store) => WalletImportPage('Cüzdan Yükle'),
         ),
     '/transfer': (BuildContext context) => WalletTransferProvider(
           // ignore: prefer_const_constructors
           builder: (context, store) => WalletTransferPage(
-            title: 'Send Tokens',
+            title: 'Token Gönder',
             network: getRouteArgs<NetworkType>(context),
           ),
         ),
     '/qrcode_reader': (BuildContext context) => QRCodeReaderPage(
-          title: 'Scan QRCode',
+          title: 'Qr Kod Okut',
           onScanned: ModalRoute.of(context)?.settings.arguments as OnScanned?,
         )
   };

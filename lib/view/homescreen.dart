@@ -5,6 +5,7 @@ import 'package:de_pay/components/widgets/appbar.dart';
 import 'package:de_pay/models/model.dart';
 import 'package:de_pay/pages/animation_ground.dart';
 import 'package:de_pay/pages/coin_home.dart';
+import 'package:de_pay/pages/homepart.dart';
 import 'package:de_pay/theme/constants.dart';
 import 'package:de_pay/view/wallet_connect/add_card.dart';
 import 'package:de_pay/view/wallet_connect/my_card.dart';
@@ -33,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final ScrollController _scroolController = ScrollController();
   final _controller = PageController();
   final _offsetToArmed = 120.0;
-var coinlerList=[];
+  var coinlerList = [];
   @override
   RxList cryptoCharts = [].obs;
 
@@ -82,64 +83,6 @@ var coinlerList=[];
                   //clipBehavior: Clip.none,
 
                   children: [
-                    //ANASAYFA ilk resimler kaydirmali
-                    /*   Flexible(
-                      flex: 3,
-                      child: ListView(
-                        controller: _scroolController,
-                        children: [
-                          //SizedBox
-                          const SizedBox(
-                            height: 10,
-                          ),
-                    
-                          CarouselSlider(
-                            items: [
-                              Container(
-                                decoration: const BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
-                                    image: DecorationImage(
-                                        image: AssetImage(tanitim4),
-                                        fit: BoxFit.cover)),
-                              ),
-                              Container(
-                                decoration: const BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
-                                    image: DecorationImage(
-                                        image: AssetImage(tanitim1),
-                                        fit: BoxFit.cover)),
-                              ),
-                              Container(
-                                decoration: const BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
-                                    image: DecorationImage(
-                                        image: AssetImage(tanitim2),
-                                        fit: BoxFit.cover)),
-                              ),
-                              Container(
-                                decoration: const BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
-                                    image: DecorationImage(
-                                        image: AssetImage(tanitim3),
-                                        fit: BoxFit.cover)),
-                              )
-                            ],
-                            options: CarouselOptions(
-                              height: 200,
-                              autoPlay: true,
-                              //autoPlayCurve: Curves.easeInOut,
-                              enlargeCenterPage: true,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    */
-
                     SizedBox(height: 12.h),
                     Container(
                       height: contHeight,
@@ -209,7 +152,9 @@ var coinlerList=[];
                           return const Text("Bir Sorun Oluştu!");
                         }
                       }
-                    })
+                    }),
+                    SizedBox(height: 5.h,),
+                    HomePart()
                   ],
                 ),
               ],

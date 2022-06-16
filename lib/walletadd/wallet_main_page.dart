@@ -38,7 +38,7 @@ class WalletMainPage extends HookWidget {
         network: network,
         address: address,
         onReset: () => Alert(
-            title: 'HATA',
+            title: 'UYARI',
             text:
                 'Anahtar cümleniz veya özel anahtarınız olmadan cüzdan bakiyenizi geri yükleyemezsiniz.',
             actions: [
@@ -47,7 +47,7 @@ class WalletMainPage extends HookWidget {
                 onPressed: () => Navigator.of(context).pop(),
               ),
               TextButton(
-                child: const Text('Reset'),
+                child: const Text('Çıkış Yap'),
                 onPressed: () async {
                   await store.resetWallet();
                   Navigator.popAndPushNamed(context, '/');
@@ -55,9 +55,9 @@ class WalletMainPage extends HookWidget {
               )
             ]).show(context),
         onRevealKey: () => Alert(
-            title: 'Private key',
+            title: 'Özel Anahtar',
             text:
-                'WARNING: In production environment the private key should be protected with password.\r\n\r\n${store.getPrivateKey() ?? "-"}',
+                'UYARI: Dikkatli olun özel anahtar parolanızdır.\r\n\r\n${store.getPrivateKey() ?? "-"}',
             actions: [
               TextButton(
                 child: const Text('Kapat'),
@@ -99,24 +99,26 @@ class WalletMainPage extends HookWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(height: 5.h,),
-            ChangeNetwork(
-              onChange: store.changeNetwork,
-              currentValue: store.state.network,
-              loading: store.state.loading,
-            ),
-           SizedBox(height: 10.h,),
-            Balance(
-              address: store.state.address,
-              ethBalance: store.state.ethBalance,
-              tokenBalance: store.state.tokenBalance,
-              symbol: network.config.symbol,
-            )
-          ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(height: 5.h,),
+              ChangeNetwork(
+                onChange: store.changeNetwork,
+                currentValue: store.state.network,
+                loading: store.state.loading,
+              ),
+             SizedBox(height: 10.h,),
+              Balance(
+                address: store.state.address,
+                ethBalance: store.state.ethBalance,
+                tokenBalance: store.state.tokenBalance,
+                symbol: network.config.symbol,
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -34,7 +34,7 @@ class TransferForm extends HookWidget {
             padding: 30,
             actionButtons: <Widget>[
               ElevatedButton(
-                child: const Text('Transfer now'),
+                child: const Text('Gönder'),
                 onPressed: () => onSubmit(
                   toController.value.text,
                   amountController.value.text,
@@ -46,13 +46,13 @@ class TransferForm extends HookWidget {
                 PaperValidationSummary(transferStore.state.errors!.toList()),
               PaperInput(
                 controller: toController,
-                labelText: 'To',
-                hintText: 'Type the destination address',
+                labelText: 'Alıcı',
+                hintText: 'Alıcının adresini yazın..',
               ),
               PaperInput(
                 controller: amountController,
-                labelText: 'Amount',
-                hintText: 'And amount',
+                labelText: 'Tutar',
+                hintText: 'Tutarı giriniz..',
               ),
             ],
           ),

@@ -1,3 +1,4 @@
+import 'package:de_pay/theme/constants.dart';
 import 'package:de_pay/walletadd/components/wallet/import_wallet_form.dart';
 import 'package:de_pay/walletadd/context/setup/wallet_setup_provider.dart';
 import 'package:de_pay/walletadd/model/wallet_setup.dart';
@@ -13,8 +14,15 @@ class WalletImportPage extends HookWidget {
   Widget build(BuildContext context) {
     final store = useWalletSetup(context);
     return Scaffold(
+      backgroundColor: kBackgroundColor,
       appBar: AppBar(
-        title: Text(title),
+        title: Text(
+          title,
+          style: mediumTextStyle,
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
       body: ImportWalletForm(
         errors: store.state.errors?.toList(),

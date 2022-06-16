@@ -15,12 +15,10 @@ class QrMainPage extends StatefulWidget {
 
 class _QrMainPageState extends State<QrMainPage> {
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
-body:WalletProvider( builder: (context, store) => WalletMainPage('Cüzdanım')) ,
-
+      body: WalletProvider(
+          builder: (context, store) => WalletMainPage('Cüzdanım')),
     );
   }
 }
-

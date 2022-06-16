@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:de_pay/walletadd/model/wallet_setup.dart';
 import 'package:de_pay/walletadd/service/address_service.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'wallet_setup_state.dart';
@@ -22,7 +23,7 @@ class WalletSetupHandler {
   Future<bool> confirmMnemonic(String mnemonic) async {
     if (state.mnemonic != mnemonic) {
       _store
-          .dispatch(WalletSetupAddError('Invalid mnemonic, please try again.'));
+          .dispatch(WalletSetupAddError('Geçersiz! Lütfen tekrar deneyin.'));
       return false;
     }
     _store.dispatch(WalletSetupStarted());
@@ -50,7 +51,7 @@ class WalletSetupHandler {
     }
 
     _store.dispatch(
-        WalletSetupAddError('Invalid mnemonic, it requires 12 words.'));
+        WalletSetupAddError('Geçersiz! 12 kelime gerektiriyor.',));
 
     return false;
   }
@@ -66,7 +67,7 @@ class WalletSetupHandler {
     }
 
     _store.dispatch(
-        WalletSetupAddError('Invalid private key, please try again.'));
+        WalletSetupAddError('Geçersiz özel anahtar, lütfen tekrar deneyin.'));
 
     return false;
   }

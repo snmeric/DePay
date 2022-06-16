@@ -20,13 +20,14 @@ class ImportWalletForm extends HookWidget {
 
     return Center(
       child: Container(
+        
         margin: const EdgeInsets.all(25),
         child: SingleChildScrollView(
           child: PaperForm(
             padding: 30,
             actionButtons: <Widget>[
               ElevatedButton(
-                child: const Text('Import'),
+                child: const Text('Yükle'),
                 onPressed: onImport != null
                     ? () =>
                         onImport!(importType.value, inputController.value.text)
@@ -37,33 +38,37 @@ class ImportWalletForm extends HookWidget {
               Row(
                 children: <Widget>[
                   PaperRadio(
-                    'Seed',
+                    'Anahtar Cümleniz',
                     groupValue: importType.value,
                     value: WalletImportType.mnemonic,
                     onChanged: (value) =>
                         importType.value = value as WalletImportType,
                   ),
-                  PaperRadio(
-                    'Private Key',
+                  
+                ],
+              ),
+              Row(children: [
+                PaperRadio(
+                    'Özel Anahtar',
+                    
                     groupValue: importType.value,
                     value: WalletImportType.privateKey,
                     onChanged: (value) =>
                         importType.value = value as WalletImportType,
                   ),
-                ],
-              ),
+              ],),
               Column(
                 children: <Widget>[
                   Visibility(
                       child: fieldForm(
-                          label: 'Private Key',
-                          hintText: 'Type your private key',
+                          label: 'Özel Anahtar',
+                          hintText: 'Özel Anahtarınızı Yazın',
                           controller: inputController),
                       visible: importType.value == WalletImportType.privateKey),
                   Visibility(
                       child: fieldForm(
-                          label: 'Seed phrase',
-                          hintText: 'Type your seed phrase',
+                          label: 'Anahtar Cümlesi',
+                          hintText: 'Anahtar Cümlenizi Yazın',
                           controller: inputController),
                       visible: importType.value == WalletImportType.mnemonic),
                 ],

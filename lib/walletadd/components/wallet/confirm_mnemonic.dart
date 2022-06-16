@@ -24,21 +24,24 @@ class ConfirmMnemonic extends HookWidget {
             padding: 30,
             actionButtons: <Widget>[
               OutlinedButton(
-                child: const Text('Generate New'),
+                child: const Text('Yeni Cümle Oluştur'),
                 onPressed: onGenerateNew,
               ),
               ElevatedButton(
-                child: const Text('Confirm'),
+                child: const Text('Kontrol Et'),
                 onPressed: onConfirm != null
                     ? () => onConfirm!(mnemonicController.value.text)
                     : null,
               )
             ],
-            children: <Widget>[
+            children: [
               if (errors != null) PaperValidationSummary(errors!),
               PaperInput(
-                labelText: 'Confirm your seed',
-                hintText: 'Please type your seed phrase again',
+                
+                labelText: 'Cümlenizi Yazın',
+                hintText: 'Lütfen anahtar cümlenizi tekrar yazın.',
+                
+                
                 maxLines: 2,
                 controller: mnemonicController,
               ),

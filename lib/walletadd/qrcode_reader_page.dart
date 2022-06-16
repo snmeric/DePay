@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 typedef OnScanned = void Function(String? address);
@@ -49,6 +50,11 @@ class _QRCodeReaderPageState extends State<QRCodeReaderPage> {
         : 300.0;
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(leading: IconButton(
+    icon: Icon(Icons.close ,color: Colors.white),
+    onPressed: () => Navigator.of(context).pop(),
+  ), backgroundColor: Colors.transparent, elevation: 0, ),
       body: Column(
         children: <Widget>[
           Expanded(
@@ -57,7 +63,7 @@ class _QRCodeReaderPageState extends State<QRCodeReaderPage> {
                 key: qrKey,
                 onQRViewCreated: _onQRViewCreated,
                 overlay: QrScannerOverlayShape(
-                  borderColor: Colors.red,
+                  borderColor: Colors.white,
                   borderRadius: 10,
                   borderLength: 30,
                   borderWidth: 10,

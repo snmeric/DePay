@@ -1,3 +1,4 @@
+import 'package:de_pay/theme/constants.dart';
 import 'package:de_pay/walletadd/components/wallet/confirm_mnemonic.dart';
 import 'package:de_pay/walletadd/context/setup/wallet_setup_provider.dart';
 import 'package:de_pay/walletadd/model/wallet_setup.dart';
@@ -16,8 +17,9 @@ class WalletCreatePage extends HookWidget {
     final store = useWalletSetup(context);
 
     return Scaffold(
+      backgroundColor: kBackgroundColor,
       appBar: AppBar(
-        title: Text(title),
+        title: Text(title),centerTitle: true, elevation: 0, backgroundColor: Colors.transparent,
       ),
       body: store.state.step == WalletCreateSteps.display
           ? DisplayMnemonic(

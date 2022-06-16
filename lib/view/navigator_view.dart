@@ -9,7 +9,6 @@ import 'package:de_pay/view/qr/qrmainpage.dart';
 import 'package:de_pay/walletadd/router.dart';
 import 'package:de_pay/walletadd/wallet_main_page.dart';
 
-
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,22 +27,17 @@ class NaviScreen extends StatefulWidget {
 class _NaviScreenState extends State<NaviScreen> {
   int _selectedIndex = 0;
 
-  
-
   final screen = [
     const MyHomePage(),
     const PiyasaSayfasi(),
-   
-   QrMainPage(),
-   
-  Kampanyalar(),
-  ProfilSayfasi()
+    QrMainPage(),
+    Kampanyalar(),
+    ProfilSayfasi()
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       extendBody: true,
       body: screen[_selectedIndex],
       bottomNavigationBar: Padding(
@@ -128,10 +122,9 @@ class _NaviScreenState extends State<NaviScreen> {
                             icon: IconlyBold.scan,
                             icon2: IconlyLight.scan,
                             onPressed: () {
-                             setState(() {
-                              _selectedIndex = 2;
-                               
-                             });
+                              setState(() {
+                                _selectedIndex = 2;
+                              });
                             },
                           ),
                           IconButtonBar(
@@ -219,4 +212,3 @@ class IconButtonBar extends StatelessWidget {
     );
   }
 }
-

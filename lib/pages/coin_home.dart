@@ -58,12 +58,7 @@ class CoinHome extends StatelessWidget {
                 ),
                 child: Opacity(
                   opacity: 0.07,
-                  child: Image.asset(
-                    "lib/components/images/noise.jpg",
-                    width: MediaQuery.of(context).size.width * contWidth,
-                    height: MediaQuery.of(context).size.height * contHeight,
-                    fit: BoxFit.cover,
-                  ),
+                  
                 ),
               ),
               Container(
@@ -101,7 +96,7 @@ class CoinHome extends StatelessWidget {
                       Row(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 15, top: 15),
+                            padding: const EdgeInsets.only(left: 10, top: 15),
                             child: Container(
                                 height: 5.h,
                                 child: ClipOval(
@@ -148,6 +143,7 @@ class CoinHome extends StatelessWidget {
                     // ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    
                     children: [
                       Expanded(
                         child: Container(

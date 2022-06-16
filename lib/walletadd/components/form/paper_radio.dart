@@ -1,3 +1,4 @@
+import 'package:de_pay/theme/constants.dart';
 import 'package:flutter/material.dart';
 
 typedef OnRadioChanged = void Function(
@@ -22,11 +23,14 @@ class PaperRadio extends StatelessWidget {
     return Row(
       children: <Widget>[
         Radio(
+          hoverColor: Colors.white,
+          activeColor: Colors.white,
+         
           value: value,
           groupValue: groupValue,
           onChanged: onChanged,
         ),
-        Text(title),
+        Text(title,style: minTextStyle),
       ],
     );
   }
